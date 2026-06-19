@@ -1,13 +1,28 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "pick-relevant-tests"
 version = "0.1.0"
-description = "Add your description here"
+description = "Local battery test metadata mapping, semantic retrieval, and hybrid query tooling."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "faiss-cpu>=1.12.0",
     "matplotlib>=3.11.0",
     "openpyxl>=3.1.5",
     "pandas>=3.0.3",
     "pyarrow>=24.0.0",
+    "sentence-transformers>=5.0.0",
     "seaborn>=0.13.2",
 ]
+
+[project.scripts]
+pick-relevant-tests = "pick_relevant_tests.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
